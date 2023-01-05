@@ -16,9 +16,9 @@ class Proizvod extends Model
        return $this->belongsTo(Vrsta::class); ##proizvod moze pripadati samo jednoj vrsti proizvoda
 
     }
-    public function user()
+    public function prodavac()
     {
-       return $this->belongsTo(User::class); ##proizvod moze pripadati samo jednom korisniku
+       return $this->belongsTo(User::class,'user_id'); ##proizvod moze pripadati samo jednom korisniku
 
     }
 }
