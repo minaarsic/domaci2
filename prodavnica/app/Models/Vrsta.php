@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Vrsta extends Model
 {
     use HasFactory;
+    public function proizvodi()
+    {
+       return $this->hasMany(Proizvod::class); ##jedna vrsta moze imati vise proizvoda
+
+    }
 }

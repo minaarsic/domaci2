@@ -11,9 +11,14 @@ class Proizvod extends Model
     protected $guarded=['id'];//onemogucila sam da korisnik moze sam da unese id proizvoda
     protected $fillable=['sifra', 'naziv','prodajna_cena','kupovna_cena', 'stanje'];  
 
-   // public function Vrsta()
-   // {
-    //   return $this->belongsTo(Vrsta::class); ##proizvod moze pripadati samo jednoj vrsti proizvoda
+    public function vrsta()
+    {
+       return $this->belongsTo(Vrsta::class); ##proizvod moze pripadati samo jednoj vrsti proizvoda
 
-   // }
+    }
+    public function user()
+    {
+       return $this->belongsTo(User::class); ##proizvod moze pripadati samo jednom korisniku
+
+    }
 }
