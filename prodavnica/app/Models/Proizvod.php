@@ -9,7 +9,7 @@ class Proizvod extends Model
 {
     use HasFactory;
     protected $guarded=['id'];//onemogucila sam da korisnik moze sam da unese id proizvoda
-    protected $fillable=['sifra', 'naziv','prodajna_cena','kupovna_cena', 'stanje'];  
+    protected $fillable=['sifra', 'naziv','prodajna_cena','kupovna_cena', 'stanje','napomena'];  
 
     public function vrsta()
     {

@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
 
 
       $user= User::factory()->create();
-     
+      $user1= User::factory()->create();
+
        $vrsta1=Vrsta::factory()->create();
       $vrsta2=Vrsta::factory()->create();
       $vrsta3=Vrsta::factory()->create();

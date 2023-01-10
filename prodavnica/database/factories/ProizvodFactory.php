@@ -18,7 +18,7 @@ class ProizvodFactory extends Factory
     public function definition()
     {
         return [
-            'sifra'=>$this->faker->ean8(),
+            'sifra'=>$this->faker->string(),
             'naziv'=>$this->faker->word(),
             'prodajna_cena'=>$this->faker->numerify(),
             'kupovna_cena'=>$this->faker->numerify(),

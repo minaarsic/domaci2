@@ -58,7 +58,7 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
+//trajno
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
