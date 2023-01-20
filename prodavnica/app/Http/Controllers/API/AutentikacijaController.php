@@ -14,7 +14,7 @@ class AutentikacijaController extends Controller
     public function registracija(Request $request)
     {
       $validator=Validator::make($request->all(),[
- //unosimo poatke koji su obaveyni prilikom registracije
+ //unosimo podatke koji su obaveyni prilikom registracije
  'name'=>'required|string|max:255',
  'email'=>'required|string|max:255|email|unique:users',
 'password'=>'required|string|min:7'

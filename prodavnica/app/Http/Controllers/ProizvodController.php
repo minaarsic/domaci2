@@ -11,16 +11,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ProizvodController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $validator= Validator::make($request->all(),[
             'sifra'=>'required|max:8',
-            'naziv'=>'required|string|max:255',
+            'naziv'=>'required',
             'prodajna_cena'=>'required',
             'kupovna_cena'=>'required',
-            'stanje'=>'nullable',
+            'stanje'=>'required',
             'vrsta_id'=>'required',
-            'napomena'=>'nullable|string',
+            'napomena'=>'required',
         ]);
 
         if($validator->fails())
@@ -30,11 +31,11 @@ class ProizvodController extends Controller
                  $proizvod=Proizvod::create(
                     [ 'sifra'=>$request->sifra,
                     'naziv'=>$request->naziv,
-                     'prodajna_cena'=>$request->prodajna_cena,
+                    'prodajna_cena'=>$request->prodajna_cena,
                     'kupovna_cena'=>$request->kupovna_cena,
                     'stanje'=>$request->stanje,
                     'vrsta_id'=>$request->vrsta_id,
-                     'user_id'=>Auth::user()->id,
+                    'user_id'=>Auth::user()->id,
                     'napomena'=>$request->napomena]
                 );
                 return response()->json(['Proizvod je ubacen uspesno', new ProizvodResource($proizvod)]);
@@ -53,25 +54,26 @@ class ProizvodController extends Controller
 
     public function update(Request $request, Proizvod $proizvod){
 $validator = Validator::make($request->all(),[
-    'sifra'=>'required|integer|max:8',
-    'naziv'=>'required|string|max:255',
-    'prodajna_cena'=>'required|integer',
-    'kupovna_cena'=>'required|integer',
-    'stanje'=>'nullable|integer',
+    'sifra'=>'required|max:8',
+    'naziv'=>'required',
+    'prodajna_cena'=>'required',
+    'kupovna_cena'=>'required',
+    'stanje'=>'required',
     'vrsta_id'=>'required',
-    'napomena'=>'nullable|string'
+    'napomena'=>'required'
 ]);
 
 if($validator->fails())
     return response()->json($validator->errors());
-     
-     $proizvod->sifra=$request->sifra;
-     $proizvod->naziv=$request->naziv;
+    
+      $proizvod->sifra=$request->sifra;
+      $proizvod->naziv=$request->naziv;
      $proizvod->prodajna_cena=$request->prodajna_cena;
-     $proizvod->kupovna_cena=$request->kupovna_cena;
+      $proizvod->kupovna_cena=$request->kupovna_cena;
      $proizvod->stanje=$request->stanje;
      $proizvod->vrsta_id=$request->vrsta_id;
-     $proizvod->napomena=$request->napomena;
+     
+      $proizvod->napomena=$request->napomena;
 
      $proizvod->save();
 return response()->json(['Proizvod izmenjen uspesno', new ProizvodResource($proizvod)]);
