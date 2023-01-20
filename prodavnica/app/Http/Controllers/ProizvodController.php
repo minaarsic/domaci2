@@ -76,6 +76,7 @@ if($validator->fails())
       $proizvod->napomena=$request->napomena;
 
      $proizvod->save();
+     
 return response()->json(['Proizvod izmenjen uspesno', new ProizvodResource($proizvod)]);
     }
 
